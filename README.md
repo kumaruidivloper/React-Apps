@@ -3,19 +3,15 @@
 npm start
 npm start -- --host 192.168.68.108
 npm start -- --host
-## Overview
 
-Set React App is a lightweight, opinionated setup for building modern React applications. Inspired by Create React App, it leverages [Vite](https://vitejs.dev/) for blazing-fast bundling, hot module replacement, and a streamlined developer experience. This template provides common tooling and sensible defaults to get you up and running quickly.
 
----
+## Explanation
 
-## Features
-
-- **Vite-Powered**: Enjoy fast bundling, instant dev server start, and on-demand file serving.  
-- **Latest React & React DOM**: Includes React and React DOM 18.x for modern React development.  
-- **Testing**: Pre-configured with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and [Jest DOM](https://github.com/testing-library/jest-dom) for robust unit and integration tests.  
-- **Simple Scripts**: A minimal set of npm scripts for development, production builds, and previews.  
-- **Web Vitals**: Measures performance for React apps, integrated out of the box.  
+1. **App.jsx** is the parent component.
+2. **Child.jsx** is the child component.
+3. We define a variable userName in App.jsx.
+4. This value is passed to **<Child />** via the prop name.
+5. Inside Child, we access it using props.name and display it.
 
 ---
 
@@ -102,17 +98,6 @@ Feel free to modify this structure based on your project’s needs.
 - **Web Vitals** (2.1.4)  
 - **Testing Libraries** (@testing-library suite, jest-dom)  
 - **Vite** (4.3.0) and **@vitejs/plugin-react** (4.0.0)  
-
----
-
-## Contributing
-
-Contributions, suggestions, and feedback are welcome!  
-1. Fork the repository  
-2. Create a new branch (`git checkout -b feature/some-new-feature`)  
-3. Commit changes (`git commit -m 'Add some feature'`)  
-4. Push to the branch (`git push origin feature/some-new-feature`)  
-5. Open a Pull Request  
 
 ---
 
