@@ -6,9 +6,11 @@
 
 ---
 
-## Overview
-
-Set React App is a lightweight, opinionated setup for building modern React applications. Inspired by Create React App, it leverages [Vite](https://vitejs.dev/) for blazing-fast bundling, hot module replacement, and a streamlined developer experience. This template provides common tooling and sensible defaults to get you up and running quickly.
+## What’s Happening
+1. App.jsx holds the counter state (count)
+2. increaseCounter is a function that increases it
+3. CounterButton.jsx gets this function via props
+4. When you click the button in the child, it calls the parent’s function → increases the count
 
 ---
 
