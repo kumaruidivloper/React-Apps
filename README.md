@@ -1,8 +1,11 @@
 
 # Set React App
-npm start
-npm start -- --host 192.168.68.108
-npm start -- --host
+1. npm start
+2. npm start -- --host 192.168.68.108
+3. npm start -- --host
+
+---
+
 ## Overview
 
 Set React App is a lightweight, opinionated setup for building modern React applications. Inspired by Create React App, it leverages [Vite](https://vitejs.dev/) for blazing-fast bundling, hot module replacement, and a streamlined developer experience. This template provides common tooling and sensible defaults to get you up and running quickly.
