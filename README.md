@@ -6,9 +6,10 @@
 
 ---
 
-## Overview
-
-Set React App is a lightweight, opinionated setup for building modern React applications. Inspired by Create React App, it leverages [Vite](https://vitejs.dev/) for blazing-fast bundling, hot module replacement, and a streamlined developer experience. This template provides common tooling and sensible defaults to get you up and running quickly.
+## Explanation
+1. Parent passes a function (onSendData) to Child.
+2. Child calls this function and passes the userDetails object.
+3. Parent receives this object in handleChildData and can use or log it.
 
 ---
 
