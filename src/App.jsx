@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import CircleFollower from './CircleFollower';
 
 const App = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      setCursor({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -18,9 +18,8 @@ const App = () => {
 
   return (
     <div style={{ height: '100vh', width: '100vw', position: 'relative' }}>
-      <h1>Move your mouse!</h1>
-      {/* Pass mouse position to the child */}
-      <CircleFollower position={position} />
+      <h2>Move your mouse — the circle follows smoothly!</h2>
+      <CircleFollower targetPosition={cursor} />
     </div>
   );
 };

@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const CircleFollower = ({ position }) => {
+const CircleFollower = ({ targetPosition }) => {
+  const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
+  const animationRef = useRef();
+
+  useEffect(() => {
+    const animate = () => {
+      setCurrentPosition((prev) => {
+        const dx = targetPosition.x - prev.x;
+        const dy = targetPosition.y - prev.y;
+        const speed = 0.1; // lower = smoother/slower
+
+        return {
+          x: prev.x + dx * speed,
+          y: prev.y + dy * speed,
+        };
+      });
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationRef.current);
+  }, [targetPosition]);
+
   const style = {
     position: 'absolute',
-    left: position.x,
-    top: position.y,
+    left: currentPosition.x,
+    top: currentPosition.y,
     width: '30px',
     height: '30px',
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
     borderRadius: '50%',
-    pointerEvents: 'none', // Let mouse events pass through
-    transform: 'translate(-50%, -50%)', // center the circle on the cursor
+    pointerEvents: 'none',
+    transform: 'translate(-50%, -50%)',
   };
 
   return <div style={style}></div>;
