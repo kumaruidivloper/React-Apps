@@ -1,27 +1,23 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import './App.css';
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-  reset,
-} from './redux/counter';
+import logo from "./logo.svg";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import AddTask from "./components/AddTask";
+import Container from "./../node_modules/react-bootstrap/esm/Container";
+import { Row,Col } from "react-bootstrap";
+import TasksList from "./components/TasksList";
 
-export default function App() {
-  const { count } = useSelector((state) => state.counter);
-  const dispatch = useDispatch();
+function App() {
   return (
-    <div>
-      <h1>The Count is: {count}</h1>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
-      <button onClick={() => dispatch(incrementByAmount(33))}>
-        Increment by 33
-      </button>
-      <button onClick={() => dispatch(reset())}>Reset</button>
-    </div>
+    <Container>
+      <Navbar />
+      <Row className="justify-content-md-center">
+        <Col  lg="6">
+          <AddTask />
+          <TasksList/>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
-
+export default App;

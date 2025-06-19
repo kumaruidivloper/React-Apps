@@ -1,18 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from "./App.jsx";
-import reportWebVitals from './reportWebVitals.jsx';
-import { store } from './redux/store';
-import { Provider } from 'react-redux';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";  
 
-
-//root is called form index.html root id HTML element here for virtual DOM//
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Provider store={store}>
+  <React.StrictMode>
     <App />
-  </Provider>,
+  </React.StrictMode>
 );
 
 reportWebVitals();
