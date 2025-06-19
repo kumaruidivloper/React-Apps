@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Child from './child';
+import { render } from '@testing-library/react';
 
-function App() {
+const App = () => {
+  // Function to receive data from child
+  const handleChildData = (dataFromChild) => {
+    console.log('Received from child:', dataFromChild);
+    render(
+      <>
+        <ul>
+          <li>{dataFromChild.name}</li>
+          <li>{dataFromChild.age}</li>
+          <li>{dataFromChild.location}</li>
+        </ul>
+      </>
+    )
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://react.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Parent Component</h1>
+      {/* Passing callback function to child */}
+      <Child onSendData={handleChildData} />
     </div>
   );
-}
+};
 
 export default App;
