@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const CircleFollower = ({ targetPosition }) => {
-  const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
-  const animationRef = useRef();
+  const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 }); // Smooth animated position
+  const animationRef = useRef(); // For storing requestAnimationFrame ID
 
   useEffect(() => {
+    // Animate smoothly towards targetPosition
     const animate = () => {
       setCurrentPosition((prev) => {
         const dx = targetPosition.x - prev.x;
         const dy = targetPosition.y - prev.y;
-        const speed = 0.1; // lower = smoother/slower
+
+        const speed = 0.1; // Adjust for smoothness (0.1 = slow, 1 = instant)
 
         return {
           x: prev.x + dx * speed,
@@ -17,11 +19,12 @@ const CircleFollower = ({ targetPosition }) => {
         };
       });
 
-      animationRef.current = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate); // Keep animating
     };
 
     animationRef.current = requestAnimationFrame(animate);
 
+    // Cleanup: cancel animation when component unmounts or position changes
     return () => cancelAnimationFrame(animationRef.current);
   }, [targetPosition]);
 

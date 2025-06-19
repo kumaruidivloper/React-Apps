@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import CircleFollower from './CircleFollower';
 
 const App = () => {
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [cursor, setCursor] = useState({ x: 0, y: 0 }); // Track mouse position
 
+  // useEffect to track mouse movement
   useEffect(() => {
     const handleMouseMove = (e) => {
       setCursor({ x: e.clientX, y: e.clientY });
     };
 
+    // Add event listener when component mounts
     window.addEventListener('mousemove', handleMouseMove);
 
+    // Cleanup event listener when component unmounts
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
