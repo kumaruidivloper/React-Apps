@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { TasksContext } from "../context/TaskContext";
 
 const AddTask = () => {
 
+   const {state,dispatch} = useContext(TasksContext)
     
 
     const [title,setTitle] = useState('')
@@ -13,6 +15,9 @@ const AddTask = () => {
     const addTask = (e) => {
         e.preventDefault()
         console.log({title,description})
+        dispatch({type:'ADD_TASK',payload:{title,description}})
+        setTitle('')
+        setDescription('')
     }
   return (
     <section className="my-5">
