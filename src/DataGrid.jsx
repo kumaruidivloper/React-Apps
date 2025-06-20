@@ -13,9 +13,9 @@ const DataGrid = ({ data, onSort, sortConfig  }) => {
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ backgroundColor: '#f2f2f2' }}>
-            <th style={cellStyle} onClick={() => onSort('name')}>Name {renderArrow('name')}</th>
-            <th style={cellStyle} onClick={() => onSort('color')}>Color {renderArrow('color')}</th>
-            <th style={cellStyle} onClick={() => onSort('origin')}>Origin {renderArrow('origin')}</th>
+            <th style={{...cellStyle, ...pointer}} onClick={() => onSort('name')}>Name {renderArrow('name')}</th>
+            <th style={{...cellStyle, ...pointer}} onClick={() => onSort('color')}>Color {renderArrow('color')}</th>
+            <th style={{...cellStyle, ...pointer}} onClick={() => onSort('origin')}>Origin {renderArrow('origin')}</th>
           </tr>
         </thead>
         <tbody>
@@ -45,5 +45,8 @@ const cellStyle = {
   padding: '10px',
   textAlign: 'left'
 };
+const pointer = {
+    cursor: 'pointer'
+}
 
 export default DataGrid;
