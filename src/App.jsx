@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CounterProvider } from './CounterContext';
+import ComponentA from './ComponentA';
+import ComponentB from './ComponentB';
+import ComponentC from './ComponentC';
+import ComponentD from './ComponentD';
+import ComponentE from './ComponentE';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://react.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CounterProvider>
+      <div style={{ fontFamily: 'Arial', padding: '20px' }}>
+        <h2>Shared Counter via Context</h2>
+        <ComponentA />
+        <ComponentB />
+        <ComponentC />
+        <ComponentD />
+        <ComponentE />
+      </div>
+    </CounterProvider>
   );
-}
+};
 
 export default App;
