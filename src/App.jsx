@@ -17,6 +17,20 @@ const initialData = [
 const App = () => {
   const [query, setQuery] = useState('');
   const [filteredData, setFilteredData] = useState(initialData);
+  const [sortConfig, setSortConfig] = useState({ key: '', direction: 'asc' });
+
+  
+
+  const sortedData = [...filteredData].sort((a, b) => {
+    if (!sortConfig.key) return 0;
+
+    const valueA = a[sortConfig.key].toLowerCase();
+    const valueB = b[sortConfig.key].toLowerCase();
+
+    if (valueA < valueB) return sortConfig.direction === 'asc' ? -1 : 1;
+    if (valueA > valueB) return sortConfig.direction === 'asc' ? 1 : -1;
+    return 0;
+  });
 
   const handleSearch = (searchText) => {
     setQuery(searchText);
@@ -30,11 +44,24 @@ const App = () => {
     setFilteredData(filtered);
   };
 
+  const handleSort = (key) => {
+    setSortConfig((prev) => {
+      if (prev.key === key) {
+        // Toggle direction
+        return {
+          key,
+          direction: prev.direction === 'asc' ? 'desc' : 'asc',
+        };
+      }
+      return { key, direction: 'asc' }; // Default to asc when new column clicked
+    });
+  };
+
   return (
     <div style={{ padding: '40px', fontFamily: 'Arial' }}>
       <h2>Fruit Grid Search</h2>
       <SearchBox value={query} onSearch={handleSearch} />
-      <DataGrid data={filteredData} />
+      <DataGrid data={sortedData} onSort={handleSort} sortConfig={sortConfig}/>
     </div>
   );
 };

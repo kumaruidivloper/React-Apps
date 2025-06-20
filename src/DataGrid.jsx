@@ -1,14 +1,21 @@
 import React from 'react';
 
-const DataGrid = ({ data }) => {
+const DataGrid = ({ data, onSort, sortConfig  }) => {
+
+  const renderArrow = (key) => {
+    if (sortConfig.key !== key) return '⇅';
+    console.log('Sorting by', sortConfig.key, '→', sortConfig.direction);
+    return sortConfig.direction === 'asc' ? '↑' : '↓';
+  };
+
   return (
     <div style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ backgroundColor: '#f2f2f2' }}>
-            <th style={cellStyle}>Name</th>
-            <th style={cellStyle}>Color</th>
-            <th style={cellStyle}>Origin</th>
+            <th style={cellStyle} onClick={() => onSort('name')}>Name {renderArrow('name')}</th>
+            <th style={cellStyle} onClick={() => onSort('color')}>Color {renderArrow('color')}</th>
+            <th style={cellStyle} onClick={() => onSort('origin')}>Origin {renderArrow('origin')}</th>
           </tr>
         </thead>
         <tbody>
